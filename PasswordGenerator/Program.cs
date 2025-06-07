@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Security.Cryptography;
 
@@ -20,17 +20,22 @@ namespace PasswordGenerator
             int timeCurrentHour = DateTime.Now.Hour;
             string greeting = "\nWelcome to this password generator!";
 
-            if (timeCurrentHour < 12)
+            if (timeCurrentHour >= 5 && timeCurrentHour < 12)
             {
                 Console.WriteLine("Good morning!" + greeting);
             }
-
-            else if (timeCurrentHour >= 12)
+            
+            else if (timeCurrentHour >= 12 && timeCurrentHour < 18)
             {
                 Console.WriteLine("Good afternoon!" + greeting);
             }
-
-            else if (timeCurrentHour >= 19)
+            
+            else if (timeCurrentHour >= 18 && timeCurrentHour < 22)
+            {
+                Console.WriteLine("Good evening!" + greeting);
+            }
+            
+            else
             {
                 Console.WriteLine("Good evening!" + greeting);
             }
@@ -126,6 +131,8 @@ namespace PasswordGenerator
             string GeneratedPass = CreatePassword(passwordLength);
             Console.WriteLine($"Your generated password is: {GeneratedPass}\n");
             Console.WriteLine($"Sucessfully generated password of length {passwordLength} with complexity option {passwordComplexity}.");
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
 
         public static string CreatePassword(int length)
